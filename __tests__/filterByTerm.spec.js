@@ -27,4 +27,15 @@ describe('Filter Function', () => {
 
 		expect(filterByTerm(input, 'uRl')).toEqual(output);
 	});
+	test('It should throw error when searchTerm is empty string', () => {
+		const input = [
+			{ id: 1, url: 'https://www.url1.dev' },
+			{ id: 2, url: 'https://www.url2.dev' },
+			{ id: 3, url: 'https://www.link3.dev' }
+		];
+
+		expect(() => {
+			filterByTerm(input, '');
+		}).toThrowError(Error('searchTerm cannot be empty'));
+	});
 });
